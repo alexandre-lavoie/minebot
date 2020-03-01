@@ -1,0 +1,2 @@
+# minebot
+Discord MineBot
