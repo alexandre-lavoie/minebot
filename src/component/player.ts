@@ -101,13 +101,13 @@ export default class Player {
         if (hasItem != null) {
             await playerModel.updateOne({ discord_id: this.discord_id, inventory: { '$elemMatch': { minecraft_id: item.minecraft_id } } }, {
                 '$inc': {
-                    "inventory.$.count": 1
+                    "inventory.$.count": item.count
                 }
             });
         } else {
             await playerModel.updateOne({ discord_id: this.discord_id }, {
                 '$push': {
-                    'inventory': { minecraft_id: item.minecraft_id, count: 1 }
+                    'inventory': { minecraft_id: item.minecraft_id, count: item.count }
                 }
             });
         }
