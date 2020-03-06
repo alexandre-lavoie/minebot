@@ -11,7 +11,11 @@ export default class InventoryCommand extends Command {
     }    
     
     public get description(): string {
-        return "Player's inventory.";
+        return "Get page PAGE_ID of your inventory.";
+    }
+
+    public get usage(): string {
+        return "[PAGE_ID]";
     }
 
     public get active(): boolean {

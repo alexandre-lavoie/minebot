@@ -11,6 +11,10 @@ export default class SkinCommand extends Command {
         return "Gets a player skin.";
     }
 
+    public get usage(): string {
+        return "[DISCORD_MENTION|MINECRAFT_USERNAME]"
+    }
+
     public get active(): boolean {
         return true
     }

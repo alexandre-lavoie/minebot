@@ -11,6 +11,10 @@ export default class InitCommand extends Command {
         return "Add player of MineBot database.";
     }
 
+    public get usage(): string {
+        return "[MINECRAFT_USERNAME]"
+    }
+
     public get active(): boolean {
         return true
     }

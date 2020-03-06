@@ -15,6 +15,10 @@ export default class MineCommand extends Command {
         return "Get a random object";
     }
 
+    public get usage(): string {
+        return "";
+    }
+
     public get active(): boolean {
         return true
     }
