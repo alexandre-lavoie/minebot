@@ -14,7 +14,11 @@ export default class ItemCommand extends Command {
     }
 
     public get active(): boolean {
-        return false
+        return false;
+    }
+
+    public get usage(): string {
+        return "";
     }
 
     public async execute(message: Message, args: string[], items?: MinecraftObject[]) {

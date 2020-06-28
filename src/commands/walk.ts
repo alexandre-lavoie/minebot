@@ -11,11 +11,15 @@ export default class WalkCommand extends Command {
     }    
     
     public get description(): string {
-        return "Random change to walk to next biome."
+        return "Walk to random biome."
     }
 
     public get active(): boolean {
         return true
+    }
+
+    public get usage(): string {
+        return ""
     }
 
     public async execute(message: Message, args: string[]) {

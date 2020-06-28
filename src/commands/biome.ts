@@ -12,6 +12,10 @@ export default class BiomeCommand extends Command {
         return "Get biome" 
     }
 
+    public get usage(): string {
+        return ""
+    }
+
     public get active(): boolean {
         return true
     }

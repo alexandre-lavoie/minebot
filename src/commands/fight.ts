@@ -18,20 +18,23 @@ export default class FightCommand extends Command {
         return true
     }
 
+    public get usage(): string {
+        return "";
+    }
+
     public async execute(message: Message, args: string[]) {
         if(uniformOdd(FIGHT)){
-            let server = await Server.fromMessage(message);
+            let server = Server.fromMessage(message);
 
             let entity = await server.getEntity();
     
             if(entity){
-                let loot = entity.getLoot();
+                let loot = await entity.getLoot();
     
                 if(loot){
                     new ItemCommand().execute(message, args, loot);
                 }
             }
         }
-
     }
 }
