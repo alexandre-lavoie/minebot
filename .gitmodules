@@ -1,0 +1,3 @@
+[submodule "minebot-data"]
+	path = minebot-data
+	url = git@github.com:alexandre-lavoie/minebot-data.git
