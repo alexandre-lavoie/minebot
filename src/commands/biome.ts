@@ -1,9 +1,8 @@
 import { RichEmbed, Message } from "discord.js";
-import Command from '../component/command';
-import Server from '../component/server';
+import Command from "../component/command";
+import Server from "../component/server";
 
 export default class BiomeCommand extends Command {
-
     public get name(): string { 
         return "biome" 
     }

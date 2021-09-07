@@ -1,5 +1,5 @@
 import { RichEmbed, Message } from "discord.js";
-import Command from '../component/command';
+import Command from "../component/command";
 import Item from "../component/item";
 import Player from "../component/player";
 import MinecraftObject from "../component/minecraftObject";

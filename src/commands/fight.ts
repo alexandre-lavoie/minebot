@@ -1,9 +1,10 @@
 import { Message } from "discord.js";
-import Command from '../component/command';
+import Command from "../component/command";
 import Server from "../component/server";
 import ItemCommand from "./item";
 import { uniformOdd } from "../util";
-import { FIGHT } from '../../data/discord/probability.json';
+import fs from "fs";
+import path from "path";
 
 export default class FightCommand extends Command {
     public get name(): string {
@@ -23,6 +24,8 @@ export default class FightCommand extends Command {
     }
 
     public async execute(message: Message, args: string[]) {
+        const FIGHT = JSON.parse(fs.readFileSync(path.resolve(process.env.DATA_DIR, "./data/discord/probability.json")).toString("utf8")).FIGHT;
+
         if(uniformOdd(FIGHT)){
             let server = Server.fromMessage(message);
 

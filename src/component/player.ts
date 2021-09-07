@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { model, Schema, Document } from 'mongoose';
-import { InventoryItem } from './inventory';
-import { Message } from 'discord.js';
-import MinecraftObject from './minecraftObject';
+import axios from "axios";
+import { model, Schema, Document } from "mongoose";
+import { InventoryItem } from "./inventory";
+import { Message } from "discord.js";
+import MinecraftObject from "./minecraftObject";
 
 export interface PlayerModel extends Document {
     discord_id: string
@@ -11,7 +11,6 @@ export interface PlayerModel extends Document {
 }
 
 export default class Player {
-
     discord_id: string
     inventory?: [InventoryItem]
 
@@ -69,13 +68,9 @@ export default class Player {
     }
 
     public async register(minecraft_name: string): Promise<boolean> {
-        let minecraft_id: string;
+        if(!minecraft_name) return false;
 
-        if(minecraft_name){
-            minecraft_id = await Player.getMinecraftIDFromName(minecraft_name);
-        } else {
-            return false;
-        }
+        let minecraft_id: string = await Player.getMinecraftIDFromName(minecraft_name);
 
         const players = await playerModel.find({
             "$or": [{
@@ -85,17 +80,14 @@ export default class Player {
             }]
         });
 
-        if (players.length == 0) {
-            this.create(minecraft_name);
+        if (players.length != 0) return false;
+        
+        this.create(minecraft_name);
     
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
 
     async addToInventory(item: MinecraftObject) {
-
         const hasItem = await playerModel.findOne({ discord_id: this.discord_id, inventory: { '$elemMatch': { minecraft_id: item.minecraft_id } } });
     
         if (hasItem != null) {

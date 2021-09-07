@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: mongo
+    networks:
+      - network-minebot
+  
+  minebot:
+    container_name: minebot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    networks:
+      - network-minebot
+
+networks:
+  network-minebot:
+    driver: bridge
+  

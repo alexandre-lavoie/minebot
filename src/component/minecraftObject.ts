@@ -1,9 +1,8 @@
 import { minecraftIdToName } from "../util";
-import sharp = require("sharp");
+import sharp from "sharp";
 import { Attachment } from "discord.js";
 
 export default abstract class MinecraftObject {
-    
     name: string
     count: number
     minecraft_id: string
@@ -14,7 +13,7 @@ export default abstract class MinecraftObject {
         this.name = (name) ? name : minecraftIdToName(minecraft_id);
     }
 
-    public abstract async getAttachment(): Promise<Attachment>
+    public abstract getAttachment(): Promise<Attachment>
 
     public abstract getImageURL(): string
 

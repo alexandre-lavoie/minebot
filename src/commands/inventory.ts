@@ -1,6 +1,6 @@
 import { RichEmbed, Message } from "discord.js";
-import Command from '../component/command';
-import PlayerInventory from '../component/playerInventory';
+import Command from "../component/command";
+import PlayerInventory from "../component/playerInventory";
 import Player from "../component/player";
 
 const playerInventory = new PlayerInventory();

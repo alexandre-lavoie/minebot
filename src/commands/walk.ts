@@ -1,9 +1,10 @@
 import { RichEmbed, Message } from "discord.js";
-import Command from '../component/command';
-import { BIOME_CHANGE } from '../../data/discord/probability.json';
+import Command from "../component/command";
 import Biome from "../component/biome";
 import Server from "../component/server";
 import { uniformOdd } from "../util";
+import fs from "fs";
+import path from "path";
 
 export default class WalkCommand extends Command {
     public get name(): string {
@@ -23,6 +24,8 @@ export default class WalkCommand extends Command {
     }
 
     public async execute(message: Message, args: string[]) {
+        const BIOME_CHANGE = JSON.parse(fs.readFileSync(path.resolve(process.env.DATA_DIR, "./data/discord/probability.json")).toString("utf8")).BIOME_CHANGE;
+
         if(uniformOdd(BIOME_CHANGE)){
             let biome = Biome.random();
 
@@ -30,9 +33,7 @@ export default class WalkCommand extends Command {
     
             const server = Server.fromMessage(message);
 
-            if(server){
-                await server.updateBiome(biome);
-            }
+            if(server) await server.updateBiome(biome);
     
             const embed = new RichEmbed()
             .setColor('#36b030')

@@ -1,10 +1,8 @@
 import { RichEmbed, Message } from "discord.js";
-import Command from '../component/command';
-import Server from '../component/server';
-import { client } from '../index';
+import Command from "../component/command";
+import { client } from "../index";
 
 export default class HelpCommand extends Command {
-
     public get name(): string {
         return "help"
     }

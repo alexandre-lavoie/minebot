@@ -1,5 +1,5 @@
 import { RichEmbed, Message } from "discord.js";
-import Command from '../component/command';
+import Command from "../component/command";
 import Player from "../component/player";
 
 export default class InitCommand extends Command {

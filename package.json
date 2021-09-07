@@ -19,18 +19,18 @@
   },
   "homepage": "https://github.com/alexandre-lavoie/minebot#readme",
   "dependencies": {
-    "@types/mongoose": "^5.7.3",
-    "@types/node": "^13.7.7",
-    "@types/sharp": "^0.24.0",
     "axios": "^0.19.2",
-    "discord.js": "^11.6.1",
-    "dotenv": "^8.2.0",
-    "mongoose": "^5.9.2",
-    "sharp": "^0.24.1"
+    "discord.js": "^11.6.4",
+    "dotenv": "^8.6.0",
+    "mongoose": "^5.13.9",
+    "sharp": "^0.29.0"
   },
   "devDependencies": {
-    "ts-node": "^8.6.2",
-    "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.8.3"
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^13.13.52",
+    "@types/sharp": "^0.28.6",
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^3.9.10"
   }
 }

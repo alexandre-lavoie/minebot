@@ -1,5 +1,5 @@
 import Cron from "../component/cron";
-import { client } from '../index';
+import { client } from "../index";
 import { TextChannel, RichEmbed } from "discord.js";
 import Entity from "../component/entity";
 import Server from "../component/server";
@@ -37,7 +37,7 @@ export default class SpawnEntityCron extends Cron {
                 const embed = new RichEmbed()
                 .setColor('#36b030')
                 .setTitle(`${entity.name}`)
-                .setDescription(`A wild ${entity.name} appeared.`)
+                .setDescription(`A wild **${entity.name}** appeared.`)
                 .attachFile(attachment)
                 .setImage(`attachment://${attachment.name}`);
 

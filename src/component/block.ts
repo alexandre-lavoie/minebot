@@ -1,12 +1,13 @@
-import * as blocks from '../../data/discord/blocks.json';
-import { Attachment } from 'discord.js';
+import { Attachment } from "discord.js";
 import sharp = require('sharp');
-import fs from 'fs';
-import MinecraftObject from './minecraftObject';
+import fs from "fs";
+import MinecraftObject from "./minecraftObject";
+import path from "path";
 
 export default class Block extends MinecraftObject {
-
     public static random(): Block {
+        const blocks = JSON.parse(fs.readFileSync(path.resolve(process.env.DATA_DIR, "./data/discord/blocks.json")).toString("utf8"));
+
         let keys = Object.keys(blocks) as Array<keyof typeof blocks>;
         let name = keys[Math.floor(keys.length * Math.random())];
         let obj = blocks[name];
@@ -15,11 +16,11 @@ export default class Block extends MinecraftObject {
     }
 
     public getImageURL(): string {
-        return `./assets/blocks/${this.minecraft_id}.png`;
+        return path.resolve(process.env.DATA_DIR, `./assets/blocks/${this.minecraft_id}.png`);
     }
 
     public static getImageURLFromID(minecraft_id: string): string {
-        return `./assets/blocks/${minecraft_id}.png`;
+        return path.resolve(process.env.DATA_DIR, `./assets/blocks/${minecraft_id}.png`);
     }
 
     public async getInventoryImage(): Promise<Buffer> {

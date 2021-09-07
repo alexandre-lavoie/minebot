@@ -10,7 +10,6 @@ interface ServerModel extends Document {
 }
 
 export default class Server {
-
     discord_id: string
 
     constructor(discord_id: string){
@@ -28,8 +27,14 @@ export default class Server {
     public async getBiome(): Promise<Biome | undefined> {
         const server = await this.get();
 
-        if(server && server.biome) {
-            return new Biome(server.biome);
+        if(server) {
+            if(server.biome) {
+                return new Biome(server.biome);
+            } else {
+                let new_biome = Biome.random();
+                this.updateBiome(new_biome);
+                return new_biome;
+            }
         }
     }
 
@@ -68,6 +73,6 @@ export default class Server {
 
 export const serverModel = model<ServerModel>('Server', new Schema({
     discord_id: { type: String, unique: true },
-    biome: { type: String, default: Biome.random().minecraft_id },
+    biome: { type: String, default: null },
     entity: { 'minecraft_id': String, variant: String }
 }));

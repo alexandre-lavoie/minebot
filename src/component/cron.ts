@@ -6,6 +6,6 @@ export default abstract class Cron extends Command {
         return "";
     }
     public toString(): string {
-        return super.toString() + ` (${this.interval} Seconds)`
+        return super.toString() + ` (${this.interval} Seconds)`;
     }
 }

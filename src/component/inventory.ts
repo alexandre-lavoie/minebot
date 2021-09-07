@@ -10,7 +10,6 @@ export interface InventoryItem {
 }
 
 export default abstract class Inventory {
-    
     columns: number[]
     rows: number[]
     size: number
